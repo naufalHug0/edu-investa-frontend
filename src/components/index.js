@@ -1,5 +1,5 @@
 import Button from "./button";
-import Input from "./input";
+import InputText from "./input";
 import SlideController from "./slide-controller";
 import ViewAllLink from "./view-all-link";
 import CancelButton from "./cancel-button";
@@ -9,10 +9,13 @@ import Leaderboard from "./leaderboard";
 import Icon from "./icon";
 import Footer from "./footer";
 import BackNavigation from "./back-navigation";
+import Loader from './loader'
+import LoadingSpinner from './loading-spinner'
+import LoadingSpinnerWrapper from './loading-spinner-wrapper'
 
 export {
     Button,
-    Input,
+    InputText,
     SlideController,
     ViewAllLink,
     CancelButton,
@@ -21,5 +24,8 @@ export {
     Hero,
     Leaderboard,
     Footer,
-    BackNavigation
+    BackNavigation,
+    Loader,
+    LoadingSpinner,
+    LoadingSpinnerWrapper
 }

@@ -1,7 +1,9 @@
 import React from 'react'
 import { Navigate, Outlet } from 'react-router'
+import {AuthServices} from '../../services'
 
-const isAuthenticated = true
+const Auth = new AuthServices()
+const isAuthenticated = Auth.isAuthenticated()
 
 const PrivateRoute = () => {
     return isAuthenticated ? <Outlet/> : <Navigate to='/auth/login'/>

@@ -9,6 +9,10 @@
       @apply font-default box-border;
   }
 
+  body {
+    scroll-behavior: smooth;
+  }
+
   .text-fill { -webkit-text-fill-color: #e0e0e0 }
   .text-fill-transparent { -webkit-text-fill-color: transparent }
   .text-fill-black { -webkit-text-fill-color: #000 }
@@ -80,7 +84,7 @@
   }
 
   .btn-secondary {
-    @apply interaction-btn bg-[#f0f0f0] text-green-contrast;
+    @apply interaction-btn bg-[#e9e9e9] text-green-contrast;
   }
   
   .btn-disabled {
@@ -106,7 +110,7 @@
   }
 
   .input-text {
-    @apply input;
+    @apply input ;
   }
 
   .input-text.invalid {
@@ -221,6 +225,10 @@
 
   .wrong-option {
     @apply bg-red-default border-red-default;
+  }
+
+  .video-shorts-height {
+    height: calc(100vh - 56px);
   }
 }
 

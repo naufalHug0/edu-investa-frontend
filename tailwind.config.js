@@ -77,6 +77,26 @@ export default {
             opacity: 0,
             transform: 'translateY(200%)'
           }
+        },
+        'rotate':{
+          '0%':{
+            transform: 'rotate(0deg)'
+          },
+          '100%':{transform: 'rotate(180deg)'}
+        },
+        'rotate-reverse':{
+          '0%':{
+            transform: 'rotate(180deg)'
+          },
+          '100%':{transform: 'rotate(0deg)'}
+        },
+        'aside-open':{
+          '0%':{left: '-200%'},
+          '100%':{left: '0'}
+        },
+        'aside-close':{
+          '0':{left: '0'},
+          '100%':{left: '-200%'}
         }
       },
       animation: {
@@ -84,6 +104,10 @@ export default {
         'fade-in': 'fade-in .8s ease-in-out forwards',
         'swipe-up-skill': 'swipe-up-skill .5s ease-in-out forwards',
         'swipe-down-skill': 'swipe-down-skill .5s ease-in-out forwards',
+        'rotate': 'rotate .3s ease-in-out forwards',
+        'rotate-reverse': 'rotate-reverse .3s ease-in-out forwards',
+        'aside-open':'aside-open .8s ease-in-out forwards',
+        'aside-close':'aside-close .8s ease-in-out forwards',
       }
     },
   },

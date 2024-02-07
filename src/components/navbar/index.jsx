@@ -1,36 +1,36 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Logo from '../../assets/Logo.png'
-import Icon from '../icon'
-import SearchIcon from '../../assets/search.svg'
 import Button from '../button'
 import ProfilePicture from '../profile-picture'
-import SearchBar from '../search-bar'
+import CoinIcon from '../../assets/coin-icon.png'
+import { AuthServices } from '../../features/authentication/services'
 
-const Navbar = () => {
-    const [showSearchBar, setShowSearchBar] = useState(false)
+const Services = new AuthServices()
 
-    const handleSearchClick = () => {
-        setShowSearchBar(!showSearchBar)
+const Navbar = ({
+    user
+}) => {
+    const handleLogout = () => {
+        Services.logout()   
     }
 
     return (
         <nav className="bg-white fixed w-full z-20 top-0 start-0 border-b border-black py-4 px-5 flex justify-between items-center">
             <img src={Logo} className="w-40" alt="EduInvesta Logo"/>
             <div className="flex items-center gap-4">
-                <div className="hover-effect" onClick={handleSearchClick}>
-                    <Icon src={SearchIcon} width={25} className='hidden sm:block'/>
-                </div>
-                <div className='hover-effect'>
-                    <ProfilePicture/>
-                </div>
-                <Button type='btn-danger' className='py-2 px-10 hidden sm:flex'>Logout</Button>
+                {
+                    user && <div className="py-2 px-3 bg-gradient-to-l gradient-green hidden sm:flex items-center gap-[6px] rounded-md">
+                        <p className="font-bold font-secondary text-white">XP Kamu : {user.total_xp}</p>
+                        <img src={CoinIcon} width={22}/>
+                    </div>
+                }
+                {
+                    user && <div className='hover-effect'>
+                        <ProfilePicture user={user}/>
+                    </div>
+                }
+                <Button onClick={handleLogout} type='btn-danger' className='py-2 px-10 hidden sm:flex'>Logout</Button>
             </div>
-            {
-                showSearchBar && 
-                <div className="search-bar-container">
-                    <SearchBar/>
-                </div>
-            }
         </nav>
     )
 }

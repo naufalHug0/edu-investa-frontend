@@ -1,25 +1,24 @@
 import React from 'react'
 
-const Input = ({
-    placeholder,
-    type = 'text',
-    validation = { isInvalid: false },
+const InputText = ({
     className,
-    ...rest
+    type = 'text',
+    isInvalid,
+    errorMessage = null,
+    ...props
 }) => {
-
-    const InputField = ({ invalid }) => <input type={type} placeholder={placeholder} className={`${type == 'text' ? 'input-text':''} ${invalid ? 'invalid' : ''} ${className}`} {...rest}/>
-
-    const ErrorMessage = () => validation.isInvalid && <p className='input-error-message'>{validation.message}</p>
-
     return (
         <>
-        <InputField invalid={validation.isInvalid}/>
+        <input 
+        className={`input-text ${className} ${(isInvalid && errorMessage) ? 'invalid' : ''}`} 
+        type={type}
+        {...props}
+        />
         {
-            type == 'text' && <ErrorMessage/>
+            (isInvalid && errorMessage) && <p className='input-error-message'>{errorMessage}</p>
         }
         </>
     )
 }
 
-export default Input
+export default InputText

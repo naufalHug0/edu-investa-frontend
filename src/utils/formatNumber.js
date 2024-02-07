@@ -1,0 +1,1 @@
+export default function formatNumber (num) {return num.toLocaleString()}

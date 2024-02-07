@@ -1,6 +1,6 @@
-import { useEffect, useMemo } from "react"
+import { useMemo } from "react"
 
-const useTimer = (seconds, setSeconds) => {
+const useTimer = (setSeconds) => {
     const interval = useMemo(() => {
         return setInterval(() => {
             setSeconds((prevSeconds) => prevSeconds - 1)
@@ -11,9 +11,7 @@ const useTimer = (seconds, setSeconds) => {
         clearInterval(interval)
     }
 
-    useEffect(() => {
-        if (seconds == 0) clearTimer()
-    }, [seconds])
+    return [clearTimer]
 }
 
 export default useTimer

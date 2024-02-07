@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
 import CoinIcon from '../../../../assets/coin-icon.png'
+import { QuizReduxController } from '../../services'
+import { useSelector } from 'react-redux'
 
-const Option = ({ value, isCorrect, reward_xp, userHasAnswered, setUserHasAnswered, changeQuestion }) => {
+const Option = ({ value, isCorrect, reward_xp, userHasAnswered, setUserHasAnswered, changeQuestion, handleCollectXp }) => {
     const [isSelected, setIsSelected] = useState(false)
+    const {
+        correct_answers,
+        wrong_answers
+    } = useSelector(state => state.quiz)
 
     const resetSelection = () => {
         setIsSelected(false)
@@ -10,9 +16,21 @@ const Option = ({ value, isCorrect, reward_xp, userHasAnswered, setUserHasAnswer
     }
 
     const handleCorrectOption = () => {
-        setIsSelected(true)
-        setUserHasAnswered(true)
-        setTimeout(() => changeQuestion(resetSelection), 1800)
+        if (!userHasAnswered) {
+            handleCollectXp(
+                reward_xp * (isCorrect ? 1 : -1)
+            )
+            setIsSelected(true)
+            setUserHasAnswered(true)
+
+            if (isCorrect) {
+                QuizReduxController.setCorrectAnswers(correct_answers + 1)
+            } else {
+                QuizReduxController.setWrongAnswers(wrong_answers + 1)
+            }
+
+            setTimeout(() => changeQuestion(resetSelection), 1800)
+        }
     }
 
     const getOptionType = () => {

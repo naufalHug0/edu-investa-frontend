@@ -6,8 +6,8 @@ import Illustration from '../assets/Image-login.png'
 const AuthLayout = () => {
     return (
         <div className='flex lg:h-screen'>
-            <div className="flex flex-col justify-center items-center flex-1">
-                <div className="w-[80%]">
+            <div className="flex flex-col justify-center items-center flex-1" >
+                <div className="w-[88%] lg:w-[80%]">
                     <Outlet/>
                 </div>
             </div>
