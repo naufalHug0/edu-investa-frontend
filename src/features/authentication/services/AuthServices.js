@@ -53,4 +53,24 @@ export default class AuthServices extends ApiServices {
 
         this.removeBearerToken()
     }
+
+    reset_password({ 
+        old_password,
+        new_password,
+        confirm_new_password
+    }) {
+        this.fetchData(this.axiosInstance.patch('auth/reset_password', { 
+            old_password,
+            new_password,
+            confirm_new_password
+        }))
+    }
+
+    edit_profile({ 
+        name,
+        username,
+        email
+    }) {
+        this.fetchData(this.axiosInstance.patch('auth/me',{ name, username, email }))
+    }
 }

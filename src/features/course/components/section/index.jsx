@@ -22,10 +22,11 @@ const CourseSection = () => {
 
     return (
         <Loader isLoading={isLoading} loadingComponent={<LoadingSpinner/>}>
-            {
-            courses && 
-                <div className='mt-20 w-[90%] m-auto' >
-                    <h1 className="section-title">EduCourse</h1>
+            <div className='mt-20 w-[90%] m-auto' >
+                <h1 className="section-title">EduCourse</h1>
+                {
+                    courses && (courses.length > 0 ?
+                    <>
                     <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 pr-3 pb-3 items-center">
                         {
                             courses.map((course,i) => {
@@ -45,8 +46,11 @@ const CourseSection = () => {
                         <Button>Muat Lebih Banyak</Button>
                         </div>
                     }
-                </div> 
-            }
+                    </>
+                    :
+                    <p className="font-secondary">Belum ada Course</p>)
+                }
+            </div>
         </Loader>
     )
 }

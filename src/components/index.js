@@ -3,6 +3,7 @@ import InputText from "./input";
 import SlideController from "./slide-controller";
 import ViewAllLink from "./view-all-link";
 import CancelButton from "./cancel-button";
+import ProfilePicture from "./profile-picture";
 import Navbar from "./navbar";
 import Hero from "./hero";
 import Leaderboard from "./leaderboard";
@@ -19,6 +20,7 @@ export {
     SlideController,
     ViewAllLink,
     CancelButton,
+    ProfilePicture,
     Icon,
     Navbar,
     Hero,
